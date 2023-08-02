@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProfilePhoneCodeTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('profile_phone_code', function (Blueprint $table) {
+            $table->integer('id');
+            $table->char('iso', 2);
+            $table->string('name', 80);
+            $table->char('iso3', 3)->nullable();
+            $table->smallInteger('numcode')->nullable();
+            $table->integer('phonecode');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('profile_phone_code');
+    }
+}
